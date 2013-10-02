@@ -153,14 +153,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="common\include\config.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="skills.cpp" />
     <ClCompile Include="Utils\intersection.cpp" />
     <ClCompile Include="winDebugger\Client.cpp" />
     <ClCompile Include="common\src\thread.cpp" />
     <ClCompile Include="Core\beliefState.cpp" />
     <ClCompile Include="HAL\comm.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="Server.cpp" />
-    <ClCompile Include="Skills\skills.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
@@ -173,11 +173,13 @@
     <ClCompile Include="Utils\LocalAvoidance.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Attacker.hpp" />
+    <ClInclude Include="Defender.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="GoalKeeper.hpp" />
+    <ClInclude Include="includes.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Game\Attacker.hpp" />
-    <ClInclude Include="Game\Defender.hpp" />
-    <ClInclude Include="Game\Game.hpp" />
-    <ClInclude Include="Game\GoalKeeper.hpp" />
+    <ClInclude Include="skills.h" />
     <ClInclude Include="winDebugger\Client.h" />
     <ClInclude Include="common\include\config.h" />
     <ClInclude Include="common\include\cs.hpp" />
@@ -193,10 +195,8 @@
     <ClInclude Include="HAL\comm.h" />
     <ClInclude Include="mainheaders.hpp" />
     <ClInclude Include="Server.h" />
-    <ClInclude Include="Skills\skills.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="Strategy.h" />
-    <ClInclude Include="Game\includes.h" />
     <ClInclude Include="Utils\comdef.h" />
     <ClInclude Include="Utils\intersection.hpp" />
     <ClInclude Include="Utils\kalman.h" />

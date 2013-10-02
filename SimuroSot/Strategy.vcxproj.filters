@@ -36,9 +36,6 @@
     <ClCompile Include="HAL\comm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="common\src\thread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,7 +51,10 @@
     <ClCompile Include="Utils\intersection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Skills\skills.cpp">
+    <ClCompile Include="skills.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,22 +128,22 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Attacker.hpp">
+    <ClInclude Include="skills.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Defender.hpp">
+    <ClInclude Include="Defender.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Game.hpp">
+    <ClInclude Include="Attacker.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game\GoalKeeper.hpp">
+    <ClInclude Include="Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game\includes.h">
+    <ClInclude Include="GoalKeeper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Skills\skills.h">
+    <ClInclude Include="includes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

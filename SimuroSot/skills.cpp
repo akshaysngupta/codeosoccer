@@ -87,7 +87,7 @@ namespace MyStrategy
                       comm,
                       clearance,
                       avoid_obstacle);
-
+	
     float fTheta = asin(sqrt(fabs((float)r)));
     fTheta = 1 - fTheta/(PI/2);
     fTheta = pow(fTheta,2.2) ;
@@ -96,7 +96,7 @@ namespace MyStrategy
     fTot = 0.2 + fTot*(1-0.2);
 
     float profileFactor = MAX_BOT_SPEED*fTot;
-    float max_bot_linear_vel_change = 10;
+    /*float max_bot_linear_vel_change = 10;
 
     if(increaseSpeed==1&&r<0.11)
     if(fabs((float)r)<0.11)
@@ -113,8 +113,8 @@ namespace MyStrategy
       profileFactor = 1.5*MAX_BOT_SPEED;
     else if(profileFactor <-1.5*MAX_BOT_SPEED)
       profileFactor = -1.5*MAX_BOT_SPEED;
-    prevVel=profileFactor;
-    r *= profileFactor;
+    prevVel=profileFactor;*/
+    r *= 0.2*profileFactor;
     t *= profileFactor;
     #if FIRA_COMM || FIRASSL_COMM
     comm->sendCommand(botID, (t - r), (t + r));

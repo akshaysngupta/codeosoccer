@@ -8,13 +8,13 @@
 #include <string>
 #include <vector>
 
-#include "../Utils/comdef.h"
-#include "../Utils/pathPlanners.h"
-#include "../Core/beliefState.h"
-#include "../winDebugger/Client.h"
-#include "../common/include/config.h"
-#include "../HAL/comm.h"
-#include "../common/include/geometry.hpp"
+#include "Utils/comdef.h"
+#include "Utils/pathPlanners.h"
+#include "Core/beliefState.h"
+#include "winDebugger/Client.h"
+#include "common/include/config.h"
+#include "HAL/comm.h"
+#include "common/include/geometry.hpp"
 
 // Forward Declarations
 namespace MyStrategy

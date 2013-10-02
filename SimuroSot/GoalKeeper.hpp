@@ -1,12 +1,13 @@
-#include "../Skills/skills.h"
+#include "skills.h"
 
 namespace MyStrategy
 {
   // Example
   void goalkeeper(BeliefState *state)
   {
-    print("GoalKeeper\n");
-    Vec2D dpoint(OUR_GOAL_X+DBOX_HEIGHT,state->ballPos.y);
+    //print("GoalKeeper\n");
+
+	Vec2D dpoint(OUR_GOAL_X+DBOX_HEIGHT,state->ballPos.y);
     if(dpoint.y > OUR_GOAL_MAXY)
       dpoint.y = OUR_GOAL_MAXY;
     if(dpoint.y < OUR_GOAL_MINY)

@@ -1,7 +1,7 @@
 // For adding header files define your includes here and add the headers in Game folder.
 // For example, You may see these files - Attacker.hpp,Defender.hpp and Goalkeeper.hpp
 // For checking out the skills you may see skills.h placed in Skills folder.
-#include "../Skills/skills.h"
+#include "skills.h"
 
 namespace MyStrategy
 {

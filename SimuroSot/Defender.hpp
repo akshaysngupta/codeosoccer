@@ -1,10 +1,10 @@
-#include "../Skills/skills.h"
+#include "skills.h"
 
 namespace MyStrategy
 {
   // Example
   void defender(BeliefState *state)
   {
-    print("Defender\n");
+    //print("Defender\n");
   }
 }

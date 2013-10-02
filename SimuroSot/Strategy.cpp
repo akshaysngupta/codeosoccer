@@ -41,8 +41,6 @@ extern "C" STRATEGY_API void Create ( Environment *env )
 {
 	Comm::getInstance()->envi=env;
 	counter=0;
-  print("intit connection %d\n",counter);
-	//Client::debugClient->SendMessages(data);
 }
 
 extern "C" STRATEGY_API void Destroy ( Environment *env )
@@ -55,7 +53,6 @@ extern "C" STRATEGY_API void Destroy ( Environment *env )
 
 extern "C" STRATEGY_API void Strategy ( Environment *env )
 {
-	Client::debugClient->SendMessages("ok i am here\n");
 	static int flag = 0;
   Comm::getInstance()->envi=env;
 	kFilter.addInfo(env,invert_field);
@@ -68,8 +65,4 @@ extern "C" STRATEGY_API void Strategy ( Environment *env )
 	int k;
 
 	counter++;
-	/*char data[250];
-	wsprintf(data,"sending data: %d\n",counter);
-	//Client::debugClient->SendMessages(data);
-  */
 }

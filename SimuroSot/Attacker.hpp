@@ -1,4 +1,4 @@
-#include "../Skills/skills.h"
+#include "skills.h"
 
 namespace MyStrategy
 {
