@@ -16,6 +16,8 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     server.cpp
 
+CONFIG += static
+
 HEADERS  += mainwindow.h \
     targetver.h \
     server.h

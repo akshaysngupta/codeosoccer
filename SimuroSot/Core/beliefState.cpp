@@ -254,9 +254,9 @@ namespace MyStrategy
 
   void BeliefState::print_values()
   {
-	  print("@@@%d\t%d*%d\t%d*%d\t%d*%d\t%d*%d\t%d@%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f@%.2f*%.2f*%.2f*%.2f@",ballPos.x,ballPos.y,homePos[0].x,homePos[0].y,homePos[1].x,homePos[1].y,homePos[2].x,homePos[2].y,homePos[3].x,homePos[3].y
-		  ,ballVel.x,ballVel.y,homeVel[0].x,homeVel[0].y,homeVel[1].x,homeVel[1].y,homeVel[2].x,homeVel[2].y,homeVel[3].x,homeVel[3].y
-		  ,(180/PI)*homeAngle[0],(180/PI)*homeAngle[1],(180/PI)*homeAngle[2],(180/PI)*homeAngle[3] );
+	  print("@@@%d\t%d*%d\t%d*%d\t%d*%d\t%d@%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f@%.2f*%.2f*%.2f@",ballPos.x,ballPos.y,homePos[0].x,homePos[0].y,homePos[1].x,homePos[1].y,homePos[2].x,homePos[2].y
+		  ,ballVel.x,ballVel.y,homeVel[0].x,homeVel[0].y,homeVel[1].x,homeVel[1].y,homeVel[2].x,homeVel[2].y
+		  ,(180/PI)*homeAngle[0],(180/PI)*homeAngle[1],(180/PI)*homeAngle[2] );
   }
   
 } // namespace MyStrategy

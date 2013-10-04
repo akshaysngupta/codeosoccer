@@ -9,6 +9,8 @@
 #include <QObject>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QPlainTextEdit>
+#include <QLabel>
 #pragma comment(lib,"ws2_32.lib")
 
 class Server : public QObject
@@ -19,26 +21,12 @@ public:
     Server();
     ~Server();
     SOCKET SocketServer;
+    QLineEdit *status;
+
     void receive_message();
-    QLineEdit  *status;
-    QLineEdit *posb;
-    QLineEdit *pos0;
-    QLineEdit *pos1;
-    QLineEdit *pos2;
-    QLineEdit *pos3;
-    QLineEdit *velb;
-    QLineEdit *vel0;
-    QLineEdit *vel1;
-    QLineEdit *vel2;
-    QLineEdit *vel3;
-    QLineEdit *ang0;
-    QLineEdit *ang1;
-    QLineEdit *ang2;
-    QLineEdit *ang3;
-    QTextEdit *random;
 signals:
     void finished();
-    
+    void receivedData(QString s);
 public slots:
     void server_start();
     

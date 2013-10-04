@@ -20,9 +20,7 @@ public:
   
   void run()
   {
-    print("bot0 pos: %d %d\n",state.homePos[0].x,state.homePos[0].y);
-
-		attacker(&state);
+	attacker(&state);
     defender(&state);
     goalkeeper(&state);
     game(&state);

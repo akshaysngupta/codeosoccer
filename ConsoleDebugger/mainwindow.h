@@ -28,7 +28,7 @@ public:
 private slots:
     void on_start_strat_clicked();
     void on_exit_strat_clicked();
-
+    void onReceivedData(QString message);
 private:
     Ui::MainWindow *ui;
 };
