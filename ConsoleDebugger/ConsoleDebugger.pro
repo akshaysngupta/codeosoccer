@@ -21,6 +21,8 @@ CONFIG += static
 HEADERS  += mainwindow.h \
     targetver.h \
     server.h
+    
+LIBS += -lws2_32
 
 FORMS    += mainwindow.ui
 
