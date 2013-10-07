@@ -33,13 +33,13 @@ namespace MyStrategy
 {  
     /****************************************************List of Skills******************************************************/
     // Go to a point with obstacle avoidance.
-    void GoToPoint(int botID,BeliefState *state,Vector2D<int> dpoint, float finalslope,bool increaseSpeed);
+    void GoToPoint(int botID,BeliefState *state,Vector2D<int> dpoint, float finalslope, bool increaseSpeed, bool shouldAlign);
     
     // Go to point without obstacle avoidance.
-    void GoToPointStraight(int botID,BeliefState *state,Vector2D<int>dpoint,float finalslope,bool increaseSpeed);
+    void GoToPointStraight(int botID,BeliefState *state,Vector2D<int>dpoint,float finalslope, bool increaseSpeed, bool shouldAlign);
     
-    // Go to ball: If align is true, then bot will align with the line joining the ball and the goal else will go straightaway.
-    void GoToBall(int botID,BeliefState *state,bool align);
+    // Go to ball: If shouldAlign is true, then bot will align with the line joining the ball and the goal else will go straightaway.
+    void GoToBall(int botID,BeliefState *state,bool shouldAlign);
     
     // Angle in radian
     void TurnToAngle(int botID,BeliefState *state,float angle);

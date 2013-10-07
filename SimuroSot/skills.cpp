@@ -9,13 +9,21 @@ namespace MyStrategy
   
 
   /***************************GoToPoint with pathplanner***************************************************/
-  void GoToPoint(int botID,BeliefState *state,Vector2D<int> dpoint, float finalslope,bool increaseSpeed)
+  void GoToPoint(int botID,BeliefState *state,Vector2D<int> dpoint, float finalslope,bool increaseSpeed, bool shouldAlign)
   {
-    maingotopoint(botID,state,dpoint,0,finalslope,0,increaseSpeed,true);
+
+	if(shouldAlign)
+		maingotopoint(botID,state,dpoint,0,finalslope,CLEARANCE_PATH_PLANNER, increaseSpeed,true);
+	else
+		maingotopoint(botID,state,dpoint,0,finalslope,0,increaseSpeed,true);
   }
-  void GoToPointStraight(int botID,BeliefState *state,Vector2D<int> dpoint, float finalslope,bool increaseSpeed)
+  void GoToPointStraight(int botID,BeliefState *state,Vector2D<int> dpoint, float finalslope,bool increaseSpeed, bool shouldAlign)
   {
-    maingotopoint(botID,state,dpoint,0,finalslope,0,increaseSpeed,false);
+	if(shouldAlign)
+		maingotopoint(botID,state,dpoint,0,finalslope,CLEARANCE_PATH_PLANNER, increaseSpeed, false);
+    else
+		maingotopoint(botID,state,dpoint,0,finalslope,0,increaseSpeed, false);
+
   }
   void maingotopoint(int botID,BeliefState *state, Vector2D<int> dpoint, float finalvel, float finalslope, float clearance,bool increaseSpeed,bool avoid_obstacle)
   {
@@ -96,24 +104,7 @@ namespace MyStrategy
     fTot = 0.2 + fTot*(1-0.2);
 
     float profileFactor = MAX_BOT_SPEED*fTot;
-    /*float max_bot_linear_vel_change = 10;
-
-    if(increaseSpeed==1&&r<0.11)
-    if(fabs((float)r)<0.11)
-      profileFactor*=2;
-    {
-      if(fabs((float)profileFactor-prevVel)>max_bot_linear_vel_change)
-      {
-        if(profileFactor>prevVel)profileFactor=prevVel+max_bot_linear_vel_change;
-        else profileFactor=prevVel-max_bot_linear_vel_change;
-      }
-      prevVel=profileFactor;
-    }
-    if(profileFactor>1.5*MAX_BOT_SPEED)
-      profileFactor = 1.5*MAX_BOT_SPEED;
-    else if(profileFactor <-1.5*MAX_BOT_SPEED)
-      profileFactor = -1.5*MAX_BOT_SPEED;
-    prevVel=profileFactor;*/
+    
     r *= 0.2*profileFactor;
     t *= profileFactor;
     #if FIRA_COMM || FIRASSL_COMM
@@ -127,7 +118,7 @@ namespace MyStrategy
 
 
   /************************************TurnToAngle*********************************/
-  void TurnToAngle(int botID,BeliefState *state,float angle)
+  void TurnToAngle(int botID,BeliefState *state, float angle)
   {
     Comm *comm = Comm::getInstance();
     float vl,vr;
@@ -144,6 +135,7 @@ namespace MyStrategy
 
     float factor = (turnAngleLeft+(turnAngleLeft))/(PI/2);
     vr = -0.4*MAX_BOT_OMEGA*(factor)/(PI/2);
+	vl = -vr;
     
     if(fabs((float)turnAngleLeft) > DRIBBLER_BALL_ANGLE_RANGE/2)
     {
@@ -163,7 +155,7 @@ namespace MyStrategy
   /*************************************GoToBall************************************/
   void GoToBall(int botID,BeliefState *state,bool align)
   {
-    Comm *comm = Comm::getInstance();
+		Comm *comm = Comm::getInstance();
 		Vector2D<int> ballInitialpos,ballFinalpos;
 		ballInitialpos = state->ballPos;
 		ballFinalpos.x = state->ballPos.x+(0.7*state->ballVel.x);
@@ -172,28 +164,29 @@ namespace MyStrategy
 		float botballdist = Vector2D<int>::dist(ballInitialpos,state->homePos[botID]);
 		float botballVeldist = Vector2D<int>::dist(ballFinalpos,state->homePos[botID]);
 		
-		float theta=Vector2D<int>::angle(ballInitialpos,ballFinalpos);
+		Vec2D goalPoint(HALF_FIELD_MAXX,0);
+		float theta=Vector2D<int>::angle(ballInitialpos,goalPoint);
 		
 		if (align==true)
 		{
 			if((Vector2D<int>::dist(ballInitialpos,state->homePos[botID]))>=BOT_BALL_THRESH)
 			{
-					if(fabs((float)tan(Vector2D<int>::angle(ballInitialpos,ballFinalpos))-tan(Vector2D<int>::angle(state->homePos[botID],ballFinalpos)))<1)
-            maingotopoint(botID,state,ballInitialpos,0,theta,50.0);
-          else
-            maingotopoint(botID,state,ballFinalpos,0,theta,50.0);
+				if(fabs((float)tan(Vector2D<int>::angle(ballInitialpos,ballFinalpos))-tan(Vector2D<int>::angle(state->homePos[botID],ballFinalpos)))<1)
+					maingotopoint(botID,state,ballInitialpos,0,theta,CLEARANCE_PATH_PLANNER,false);
+				else
+					maingotopoint(botID,state,ballFinalpos,0,theta,CLEARANCE_PATH_PLANNER,false);
 			}
 			else 
 			{
-          comm->sendCommand(botID,0,0);
+				comm->sendCommand(botID,0,0);
 			}
 		}
 		else
 		{
 			if((Vector2D<int>::dist(ballInitialpos,state->homePos[botID]))>=BOT_BALL_THRESH)
 			{
-					maingotopoint(botID,state,ballInitialpos,0,theta,00.0);
-      }
+					maingotopoint(botID,state,ballInitialpos,0,theta,00.0,false);
+			}
 			else 
 			{
 				comm->sendCommand(botID,0,0);

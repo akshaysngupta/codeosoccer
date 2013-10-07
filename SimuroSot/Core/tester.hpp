@@ -20,9 +20,6 @@ public:
   
   void run()
   {
-	attacker(&state);
-    defender(&state);
-    goalkeeper(&state);
     game(&state);
 
     return;
