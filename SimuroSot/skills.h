@@ -27,6 +27,7 @@ template <class T> class Vector2D;
 typedef Vector2D<int> Vec2D;
 // Use Vec2D to define a point with x and y as coordinate
 
+enum TeamColor{BLUE, YELLOW};
 
 
 namespace MyStrategy

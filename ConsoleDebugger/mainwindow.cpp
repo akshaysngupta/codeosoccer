@@ -16,10 +16,13 @@ MainWindow::MainWindow(QWidget *parent):
     s->status=ui->status;
 
     s->moveToThread(thread);
+    p = new QProcess();
     connect(s, SIGNAL(receivedData(QString)), this, SLOT(onReceivedData(QString)));
     connect(thread, SIGNAL(started()), s, SLOT(server_start()));
     connect(s, SIGNAL(finished()), thread, SLOT(quit()));
-
+    connect(p, SIGNAL(finished(int)), thread, SLOT(quit()));
+    connect(p, SIGNAL(finished(int)), this, SLOT(on_exit_strat_clicked()));
+//    connect(p, SIGNAL(finished(int), this, SLOT(on_exit_strat_clicked()));
     ui->bot0->setPixmap(QPixmap(":/new/images/B1s.jpg"));
     ui->bot1->setPixmap(QPixmap(":/new/images/b2s.jpg"));
     ui->bot2->setPixmap(QPixmap(":/new/images/b3s.jpg"));
@@ -45,7 +48,7 @@ void MainWindow::on_start_strat_clicked()
 void MainWindow::on_exit_strat_clicked()
 {
     ui->status->setText("Exiting Simulator");
-    p.kill();
+    p->kill();
     QApplication::quit();
 }
 
@@ -159,12 +162,12 @@ void MainWindow::onReceivedData(QString message)
 }
 
 void MainWindow::simulator()
-{
-    p.start("RobotSoccer.exe");
-    if(!p.isOpen())
+{    
+    if(!p->isOpen())
     {
-        p.kill();
-        p.start("RobotSoccer.exe");
+        p->kill();
+        p->start("RobotSoccer.exe");
+        connect(p, SIGNAL(readyReadStandardOutput()), this, SLOT(onReadReady()));
     }
     ui->status->setText("Starting Simulator");
 }
@@ -180,4 +183,10 @@ void MainWindow::on_blueButton_toggled(bool checked)
         ui->bot1->setPixmap(QPixmap(":/new/images/y2s.jpg"));
         ui->bot2->setPixmap(QPixmap(":/new/images/y3s.jpg"));
     }
+}
+
+void MainWindow::onReadReady()
+{
+    QByteArray a = p->readAllStandardOutput();
+    onReceivedData(QString(a));
 }

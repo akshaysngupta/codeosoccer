@@ -20,7 +20,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void simulator();
-    QProcess p;
+    QProcess *p;
     Server *s;
     QThread *thread;
 
@@ -30,7 +30,7 @@ private slots:
     void on_exit_strat_clicked();
     void onReceivedData(QString message);
     void on_blueButton_toggled(bool checked);
-
+    void onReadReady();
 private:
     Ui::MainWindow *ui;
 };

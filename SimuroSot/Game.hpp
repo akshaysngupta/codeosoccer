@@ -7,6 +7,7 @@
 #include "Defender.hpp"
 #include "GoalKeeper.hpp"
 
+TeamColor teamColor = BLUE;
 namespace MyStrategy
 {
   // Write your strategy here in game function.

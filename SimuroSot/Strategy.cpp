@@ -8,7 +8,7 @@
 #include <math.h>
 #include "winDebugger/Client.h"
 
-static bool invert_field = false;
+static bool invert_field = teamColor;
 
 BOOL APIENTRY DllMain( HANDLE hModule, 
                        DWORD  ul_reason_for_call, 
@@ -34,13 +34,11 @@ MyStrategy::BeliefState state;
  Tester t(state);
  Kalman kFilter;
 
- int counter;
   
 
 extern "C" STRATEGY_API void Create ( Environment *env )
 {
 	Comm::getInstance()->envi=env;
-	counter=0;
 }
 
 extern "C" STRATEGY_API void Destroy ( Environment *env )
@@ -54,15 +52,9 @@ extern "C" STRATEGY_API void Destroy ( Environment *env )
 extern "C" STRATEGY_API void Strategy ( Environment *env )
 {
 	static int flag = 0;
-  Comm::getInstance()->envi=env;
+	Comm::getInstance()->envi=env;
 	kFilter.addInfo(env,invert_field);
 	kFilter.update(state);
-  state.update();
-  
-  t.run();
-
-	int testInt = 100;	
-	int k;
-
-	counter++;
+	state.update();  
+	t.run();
 }
