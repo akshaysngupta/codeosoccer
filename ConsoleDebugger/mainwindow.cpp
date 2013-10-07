@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <Windows.h>
 #include <fstream>
-
+#include <QPixmap>
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent):
@@ -19,6 +19,11 @@ MainWindow::MainWindow(QWidget *parent):
     connect(s, SIGNAL(receivedData(QString)), this, SLOT(onReceivedData(QString)));
     connect(thread, SIGNAL(started()), s, SLOT(server_start()));
     connect(s, SIGNAL(finished()), thread, SLOT(quit()));
+
+    ui->bot0->setPixmap(QPixmap(":/new/images/B1s.jpg"));
+    ui->bot1->setPixmap(QPixmap(":/new/images/b2s.jpg"));
+    ui->bot2->setPixmap(QPixmap(":/new/images/b3s.jpg"));
+
 }
 
 MainWindow::~MainWindow()
@@ -162,4 +167,17 @@ void MainWindow::simulator()
         p.start("RobotSoccer.exe");
     }
     ui->status->setText("Starting Simulator");
+}
+
+void MainWindow::on_blueButton_toggled(bool checked)
+{
+    if(checked) {
+        ui->bot0->setPixmap(QPixmap(":/new/images/B1s.jpg"));
+        ui->bot1->setPixmap(QPixmap(":/new/images/b2s.jpg"));
+        ui->bot2->setPixmap(QPixmap(":/new/images/b3s.jpg"));
+    } else {
+        ui->bot0->setPixmap(QPixmap(":/new/images/y1s.jpg"));
+        ui->bot1->setPixmap(QPixmap(":/new/images/y2s.jpg"));
+        ui->bot2->setPixmap(QPixmap(":/new/images/y3s.jpg"));
+    }
 }

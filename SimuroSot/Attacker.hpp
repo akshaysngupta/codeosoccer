@@ -16,4 +16,5 @@ namespace MyStrategy
 	else 
 		GoToPoint(botID,state,ballPoint,0,false, true);
   }
+  
 }

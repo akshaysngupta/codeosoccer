@@ -29,6 +29,8 @@ private slots:
     void on_start_strat_clicked();
     void on_exit_strat_clicked();
     void onReceivedData(QString message);
+    void on_blueButton_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
 };

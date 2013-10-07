@@ -77,9 +77,6 @@
     <ClInclude Include="Utils\kalman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\kdTree.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Utils\pathPlanners.h">
       <Filter>Header Files</Filter>
     </ClInclude>

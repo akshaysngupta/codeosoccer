@@ -200,7 +200,6 @@
     <ClInclude Include="Utils\comdef.h" />
     <ClInclude Include="Utils\intersection.hpp" />
     <ClInclude Include="Utils\kalman.h" />
-    <ClInclude Include="Utils\kdTree.hpp" />
     <ClInclude Include="Utils\pathPlanners.h" />
   </ItemGroup>
   <ItemGroup>
