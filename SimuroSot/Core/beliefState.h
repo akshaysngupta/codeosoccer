@@ -38,6 +38,7 @@ namespace MyStrategy
     ~BeliefState();
 
     // It tries to update the belief state. If it does not change, the function returns false else true
+	
     bool      update();
     int       currFrameNum;
 	void print_values();

@@ -23,6 +23,17 @@ inline void linearTransform(int &x, int &y, float &newangle,bool invert_field)
   newangle = !invert_field?normalizeAngle(newangle+PI):newangle;
   //y=tempy-800;
 }
+inline void linearTransform_new(int &x, int &y, float &newangle,bool invert_field)
+{
+  int tempx, tempy;
+  tempx = SGN(-!invert_field+0.5)*(5000-x);
+  tempy = SGN(-!invert_field+0.5)*(4200-y);
+  x = tempx;
+  y = tempy;
+  newangle = invert_field?normalizeAngle(newangle+PI):newangle;
+  //y=tempy-800;
+}
+
 bool isIndeterminate(const float pV)
 {
     return (pV != pV);
@@ -159,7 +170,7 @@ namespace MyStrategy
         if(delTime < minDelTime)
           minDelTime = delTime;
 //        assert(delTime > 0.00000001);
-        printf("minDelTime = %lf\n", minDelTime);
+        //printf("minDelTime = %lf\n", minDelTime);
         homePosSigmaSqK[id].y    = homePosSigmaSqK[id].y * ( 1 - homePosK[id].y) + SIGMA_SQ_NOISE_POS * delTime;
       //  assert(homePosSigmaSqK[id].y >= 0);
         homePosK[id].y           = homePosSigmaSqK[id].y / (homePosSigmaSqK[id].y + SIGMA_SQ_OBSVN_POS);
@@ -187,7 +198,7 @@ namespace MyStrategy
         checkValidX(homePose[id].x, homeVelocity[id].x, newx);
         checkValidY(homePose[id].y, homeVelocity[id].y, newy);
         checkValidA(homeAngle[id], homeOmega[id], newangle);
-        printf("homePos from kalman: id: %d, xy: %.0f %.0f\n", id, homePose[id].x, homePose[id].y);
+        //printf("homePos from kalman: id: %d, xy: %.0f %.0f\n", id, homePose[id].x, homePose[id].y);
       }
       // Yellow robot info
       for (int i = 0; i < yellowNum; ++i)
@@ -199,8 +210,15 @@ namespace MyStrategy
         int newy =  env->opponent[i].pos.y*100 - CENTER_Y;
 		float newangle = env->opponent[i].rotation*PI/180;  
         double           delTime =1/60.0;// timeCapture - awayLastUpdateTime[id];
-		
-		 linearTransform(newx, newy, newangle,invert_field);
+		if(invert_field)
+			linearTransform_new(newx, newy, newangle,invert_field);
+		else
+			linearTransform(newx, newy, newangle,invert_field);
+		if(id == 1 && invert_field)
+		{
+			newx = - newx;
+			newy = -newy;
+		}
         awayPosSigmaSqK[id].x    = awayPosSigmaSqK[id].x * ( 1 - awayPosK[id].x) + SIGMA_SQ_NOISE_POS * delTime;
         awayPosK[id].x           = awayPosSigmaSqK[id].x / (awayPosSigmaSqK[id].x + SIGMA_SQ_OBSVN_POS);
         float  predictedPoseX    = awayPose[id].x + awayVelocity[id].x * (delTime);

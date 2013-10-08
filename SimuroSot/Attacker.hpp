@@ -3,7 +3,7 @@
 
 namespace MyStrategy
 {
-  // Basic example for attacker
+  // Naive example for attacker
   void attacker(BeliefState *state,int botID)
   {
     print("Attacker\n");

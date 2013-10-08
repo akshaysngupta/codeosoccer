@@ -1,0 +1,30 @@
+﻿  Strategy.cpp
+d:\robosoccer\codeosoccer\simurosot\common\include\geometry.hpp(230): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+d:\robosoccer\codeosoccer\simurosot\common\include\geometry.hpp(241): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+d:\robosoccer\codeosoccer\simurosot\common\include\timer.h(60): warning C4996: '__timezone': This function or variable may be unsafe. Consider using _get_timezone instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files (x86)\microsoft visual studio 11.0\vc\include\time.h(139) : see declaration of '__timezone'
+d:\robosoccer\codeosoccer\simurosot\common\include\timer.h(61): warning C4996: '__daylight': This function or variable may be unsafe. Consider using _get_daylight instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files (x86)\microsoft visual studio 11.0\vc\include\time.h(131) : see declaration of '__daylight'
+d:\robosoccer\codeosoccer\simurosot\utils\comdef.h(14): warning C4005: 'ABSOLUTE' : macro redefinition
+          c:\program files (x86)\windows kits\8.0\include\um\wingdi.h(1892) : see previous definition of 'ABSOLUTE'
+d:\robosoccer\codeosoccer\simurosot\utils\kalman.h(23): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+d:\robosoccer\codeosoccer\simurosot\utils\kalman.h(24): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+d:\robosoccer\codeosoccer\simurosot\utils\kalman.h(25): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+d:\robosoccer\codeosoccer\simurosot\utils\kalman.h(26): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+d:\robosoccer\codeosoccer\simurosot\tactics\tposition.hpp(40): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+d:\robosoccer\codeosoccer\simurosot\tactics\tposition.hpp(45): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+d:\robosoccer\codeosoccer\simurosot\tactics\tposition.hpp(50): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+d:\robosoccer\codeosoccer\simurosot\core\tester.hpp(44): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+d:\robosoccer\codeosoccer\simurosot\strategy.cpp(46): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+d:\robosoccer\codeosoccer\simurosot\strategy.cpp(70): warning C4101: 'k' : unreferenced local variable
+d:\robosoccer\codeosoccer\simurosot\common\include\geometry.hpp(209): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+          d:\robosoccer\codeosoccer\simurosot\utils\pathplanners.h(85) : see reference to function template instantiation 'bool intersects<int>(const Vector2D<T> &,const Vector2D<T> &,const Vector2D<T> &,T)' being compiled
+          with
+          [
+              T=int
+          ]
+d:\robosoccer\codeosoccer\simurosot\common\include\geometry.hpp(210): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+d:\robosoccer\codeosoccer\simurosot\common\include\geometry.hpp(211): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+  Strategy.vcxproj -> D:\RoboSoccer\codeosoccer\SimuroSot\.\Debug\Strategy.dll

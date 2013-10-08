@@ -18,6 +18,10 @@ SOURCES += main.cpp\
 
 CONFIG += static
 
+TARGET = Debugger
+
+RC_FILE = ./icon.rc
+
 HEADERS  += mainwindow.h \
     targetver.h \
     server.h

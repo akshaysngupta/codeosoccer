@@ -7,7 +7,12 @@
 #include "Defender.hpp"
 #include "GoalKeeper.hpp"
 
-TeamColor teamColor = BLUE;
+// Change your team color here (BLUE_TEAM/YELLOW_TEAM)
+Simulator::TeamColor teamColor = Simulator::BLUE_TEAM;
+
+// Make usingDebugger is false when playing against an opponent
+bool usingDebugger = true;
+
 namespace MyStrategy
 {
   // Write your strategy here in game function.

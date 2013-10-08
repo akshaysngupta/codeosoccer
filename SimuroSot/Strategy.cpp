@@ -8,8 +8,7 @@
 #include <math.h>
 #include "winDebugger/Client.h"
 
-static bool invert_field = teamColor;
-
+int invert_field = teamColor == Simulator::BLUE_TEAM ? 0 : 1;
 BOOL APIENTRY DllMain( HANDLE hModule, 
                        DWORD  ul_reason_for_call, 
                        LPVOID lpReserved
@@ -55,6 +54,6 @@ extern "C" STRATEGY_API void Strategy ( Environment *env )
 	Comm::getInstance()->envi=env;
 	kFilter.addInfo(env,invert_field);
 	kFilter.update(state);
-	state.update();  
+	state.update();
 	t.run();
 }

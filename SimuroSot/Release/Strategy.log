@@ -1,0 +1,46 @@
+﻿Build started 08-Oct-13 9:18:53 PM.
+     1>Project "E:\RoboSoccer\codeosoccer\SimuroSot\Strategy.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Ob1 /Oy- /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D STRATEGY_EXPORTS /D PS_CLASS=NaivePS /D _VC80_UPGRADE=0x0600 /D _WINDLL /D _MBCS /D LOCAL_AVOID /GF /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp".\Release\Strategy.pch" /Fo".\Release\\" /Fd".\Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Strategy.cpp
+         Strategy.cpp
+     1>e:\robosoccer\codeosoccer\simurosot\Utils/comdef.h(14): warning C4005: 'ABSOLUTE' : macro redefinition
+                 C:\Program Files (x86)\Windows Kits\8.0\Include\um\wingdi.h(1892) : see previous definition of 'ABSOLUTE'
+     1>e:\robosoccer\codeosoccer\simurosot\utils\..\common\include\geometry.hpp(230): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\robosoccer\codeosoccer\simurosot\utils\..\common\include\geometry.hpp(241): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>e:\robosoccer\codeosoccer\simurosot\utils\../common/include/timer.h(60): warning C4996: '__timezone': This function or variable may be unsafe. Consider using _get_timezone instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\time.h(139) : see declaration of '__timezone'
+     1>e:\robosoccer\codeosoccer\simurosot\utils\../common/include/timer.h(61): warning C4996: '__daylight': This function or variable may be unsafe. Consider using _get_daylight instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\time.h(131) : see declaration of '__daylight'
+     1>e:\robosoccer\codeosoccer\simurosot\../Simurosot/Utils/kalman.h(23): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+     1>e:\robosoccer\codeosoccer\simurosot\../Simurosot/Utils/kalman.h(24): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+     1>e:\robosoccer\codeosoccer\simurosot\../Simurosot/Utils/kalman.h(25): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+     1>e:\robosoccer\codeosoccer\simurosot\../Simurosot/Utils/kalman.h(26): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+     1>e:\robosoccer\codeosoccer\simurosot\Attacker.hpp(9): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(357) : see declaration of 'sprintf'
+     1>Strategy.cpp(55): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Release\Strategy.dll" /INCREMENTAL:NO /NOLOGO odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\Release\Strategy.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Release\Strategy.lib" /MACHINE:X86 /SAFESEH /DLL .\Release\Strategy.res
+         .\Release\config.obj
+         .\Release\main.obj
+         .\Release\skills.obj
+         .\Release\intersection.obj
+         .\Release\Client.obj
+         .\Release\thread.obj
+         .\Release\beliefState.obj
+         .\Release\comm.obj
+         .\Release\Server.obj
+         .\Release\StdAfx.obj
+         .\Release\Strategy.obj
+         .\Release\comdef.obj
+         .\Release\kalman.obj
+         .\Release\LocalAvoidance.obj
+            Creating library .\Release\Strategy.lib and object .\Release\Strategy.exp
+         Strategy.vcxproj -> E:\RoboSoccer\codeosoccer\SimuroSot\.\Release\Strategy.dll
+       PostBuildEvent:
+         START run.bat
+         :VCEnd
+     1>Done Building Project "E:\RoboSoccer\codeosoccer\SimuroSot\Strategy.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.35

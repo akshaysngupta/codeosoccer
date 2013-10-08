@@ -1,5 +1,5 @@
 #pragma once
-#include <winsock2.h>
+#include <WinSock2.h>
 #include <stdio.h> 
 #pragma comment(lib,"ws2_32.lib")
 class Client

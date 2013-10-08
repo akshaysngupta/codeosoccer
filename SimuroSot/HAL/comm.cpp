@@ -31,7 +31,10 @@ Comm* Comm::singletonInstance=0;
 
 	 {
 		// assert (fabs(v_l)>125 ||fabs(v_r)>125);
-		 envi->home[botID].velocityLeft = v_l;
-		 envi->home[botID].velocityRight = v_r;
+		 if(botID <=2 && botID >=0)
+		 {
+			 envi->home[botID].velocityLeft = v_l;
+			 envi->home[botID].velocityRight = v_r;
+		 }
 	 }
  // namespace HAL

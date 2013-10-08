@@ -27,8 +27,6 @@ template <class T> class Vector2D;
 typedef Vector2D<int> Vec2D;
 // Use Vec2D to define a point with x and y as coordinate
 
-enum TeamColor{BLUE, YELLOW};
-
 
 namespace MyStrategy
 {  
@@ -62,6 +60,7 @@ namespace MyStrategy
     
 
     bool pointyInField(Vector2D<int> final);
+
     void maingotopoint(int botID,BeliefState *state, Vector2D<int> dpoint, float finalvel, float finalslope, float clearance = CLEARANCE_PATH_PLANNER,bool increaseSpeed=0,bool avoid_obstacle = true);
     static void clearDebugData()
     {

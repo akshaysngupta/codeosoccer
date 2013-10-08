@@ -1,14 +1,7 @@
 #pragma once
 #include "skills.h"
 
-namespace MyStrategy
-{
-  // Example
-  void goalkeeper(BeliefState *state,int botID)
-  {
-    print("GoalKeeper\n");
-
-	/*
+/*
 	Vec2D can be used to make variables that can store points as (x,y) and provide utility functions.
 	Vec2D point1;
 	Vec2D point2;
@@ -19,7 +12,14 @@ namespace MyStrategy
 	These will appear automatically as you type Vec2D::
 	float angle = Vec2D::angle(point1,point2);   
 	int distance = Vec2D::distSq(point1,point2);
-	*/
+*/
+
+namespace MyStrategy
+{
+  // Naive Example for GoalKeeper
+  void goalkeeper(BeliefState *state,int botID)
+  {
+    //print("GoalKeeper\n");
 
 	Vec2D dpoint(OUR_GOAL_X+DBOX_HEIGHT,state->ballPos.y);
 

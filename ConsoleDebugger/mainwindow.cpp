@@ -17,8 +17,8 @@ MainWindow::MainWindow(QWidget *parent):
 
     s->moveToThread(thread);
     p = new QProcess();
-    connect(s, SIGNAL(receivedData(QString)), this, SLOT(onReceivedData(QString)));
     connect(thread, SIGNAL(started()), s, SLOT(server_start()));
+    connect(s, SIGNAL(receivedData(QString)), this, SLOT(onReceivedData(QString)));
     connect(s, SIGNAL(finished()), thread, SLOT(quit()));
     connect(p, SIGNAL(finished(int)), thread, SLOT(quit()));
     connect(p, SIGNAL(finished(int)), this, SLOT(on_exit_strat_clicked()));
@@ -26,7 +26,11 @@ MainWindow::MainWindow(QWidget *parent):
     ui->bot0->setPixmap(QPixmap(":/new/images/B1s.jpg"));
     ui->bot1->setPixmap(QPixmap(":/new/images/b2s.jpg"));
     ui->bot2->setPixmap(QPixmap(":/new/images/b3s.jpg"));
-
+    TeamColorFromUI = 0;
+    TeamColorFromStartegy = 0;
+    //for message parsing
+    ui->random->setMaximumBlockCount(200);
+    ui->random->ensureCursorVisible();
 }
 
 MainWindow::~MainWindow()
@@ -57,14 +61,22 @@ void MainWindow::onReceivedData(QString message)
     QString data,POSB,POS0,POS1,POS2,VELB,VEL0,VEL1,VEL2,ANG0,ANG1,ANG2;
     data.clear();
     int j,k,count=0;
+    qDebug(message.toStdString().c_str());
+    qDebug("\n");
     for(int l=0;l<message.length();l++)
     {
+        qDebug("l %d\n",l);
         if(message[l]=='@')
         {
             count++;
+            if(count==3)
+            {
+                l++;
+                TeamColorFromStartegy = message[l].digitValue();
+            }
             continue;
         }
-        if(count==3)
+        if(count==4)
         {
 
             POSB.clear();
@@ -81,6 +93,9 @@ void MainWindow::onReceivedData(QString message)
 
             j=0;
             k=0;
+
+            if(TeamColorFromStartegy != TeamColorFromUI)
+                skipThrough(message,l);
 
             for(int i=l;i<message.length();i++)
             {
@@ -149,6 +164,12 @@ void MainWindow::onReceivedData(QString message)
             ui->ang1->setText(ANG1);
             ui->ang2->setText(ANG2);
             count=0;
+
+            if(TeamColorFromStartegy == TeamColorFromUI)
+            {
+                skipThrough(message,l);
+                l--;
+            }
         }
         else
         {
@@ -157,8 +178,17 @@ void MainWindow::onReceivedData(QString message)
     }
 
     ui->random->appendPlainText(data);
-    ui->random->ensureCursorVisible();
+}
 
+void MainWindow::skipThrough(QString message,int &l)
+{
+    int count = 0;
+    while(count!=3)
+    {
+        if(message[l]=='@')
+            count++;
+        l++;
+    }
 }
 
 void MainWindow::simulator()
@@ -167,26 +197,22 @@ void MainWindow::simulator()
     {
         p->kill();
         p->start("RobotSoccer.exe");
-        connect(p, SIGNAL(readyReadStandardOutput()), this, SLOT(onReadReady()));
     }
     ui->status->setText("Starting Simulator");
 }
 
 void MainWindow::on_blueButton_toggled(bool checked)
 {
+
     if(checked) {
+        TeamColorFromUI = 0;
         ui->bot0->setPixmap(QPixmap(":/new/images/B1s.jpg"));
         ui->bot1->setPixmap(QPixmap(":/new/images/b2s.jpg"));
         ui->bot2->setPixmap(QPixmap(":/new/images/b3s.jpg"));
     } else {
+        TeamColorFromUI = 1;
         ui->bot0->setPixmap(QPixmap(":/new/images/y1s.jpg"));
         ui->bot1->setPixmap(QPixmap(":/new/images/y2s.jpg"));
         ui->bot2->setPixmap(QPixmap(":/new/images/y3s.jpg"));
     }
-}
-
-void MainWindow::onReadReady()
-{
-    QByteArray a = p->readAllStandardOutput();
-    onReceivedData(QString(a));
 }

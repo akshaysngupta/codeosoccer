@@ -13,7 +13,7 @@ using namespace std;
 using namespace Util;
 using namespace HAL;
 using namespace Simulator;
-
+extern Simulator::TeamColor teamColor;
 namespace MyStrategy
 {
 
@@ -254,9 +254,13 @@ namespace MyStrategy
 
   void BeliefState::print_values()
   {
-	  print("@@@%d\t%d*%d\t%d*%d\t%d*%d\t%d@%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f@%.2f*%.2f*%.2f@",ballPos.x,ballPos.y,homePos[0].x,homePos[0].y,homePos[1].x,homePos[1].y,homePos[2].x,homePos[2].y
+	  print("@@@%d@%d\t%d*%d\t%d*%d\t%d*%d\t%d@%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f@%.2f*%.2f*%.2f@%d\t%d*%d\t%d*%d\t%d*%d\t%d@%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f*%.2f\t%.2f@%.2f*%.2f*%.2f@",teamColor,ballPos.x,ballPos.y,homePos[0].x,homePos[0].y,homePos[1].x,homePos[1].y,homePos[2].x,homePos[2].y
 		  ,ballVel.x,ballVel.y,homeVel[0].x,homeVel[0].y,homeVel[1].x,homeVel[1].y,homeVel[2].x,homeVel[2].y
-		  ,(180/PI)*homeAngle[0],(180/PI)*homeAngle[1],(180/PI)*homeAngle[2] );
+		  ,(180/PI)*homeAngle[0],(180/PI)*homeAngle[1],(180/PI)*homeAngle[2]
+			,ballPos.x,ballPos.y,awayPos[0].x,awayPos[0].y,awayPos[1].x,awayPos[1].y,awayPos[2].x,awayPos[2].y
+				,ballVel.x,ballVel.y,awayVel[0].x,awayVel[0].y,awayVel[1].x,awayVel[1].y,awayVel[2].x,awayVel[2].y
+				,(180/PI)*awayAngle[0],(180/PI)*awayAngle[1],(180/PI)*awayAngle[2]
+				);
   }
   
 } // namespace MyStrategy

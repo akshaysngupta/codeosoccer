@@ -3,10 +3,10 @@
 
 namespace MyStrategy
 {
-  // Basic example for making a defender
+  // Naive example for defender
   void defender(BeliefState *state,int botID)
   {
-    print("Defender\n");
+    //print("Defender\n");
 	//It follows the ball
 	Vec2D dpoint;
 	dpoint.x = -HALF_FIELD_MAXX/2;

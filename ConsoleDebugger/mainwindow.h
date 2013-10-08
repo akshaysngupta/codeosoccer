@@ -20,9 +20,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void simulator();
+    void skipThrough(QString message,int &l);
     QProcess *p;
     Server *s;
     QThread *thread;
+    int TeamColorFromStartegy;
+    int TeamColorFromUI;
 
     
 private slots:
@@ -30,7 +33,6 @@ private slots:
     void on_exit_strat_clicked();
     void onReceivedData(QString message);
     void on_blueButton_toggled(bool checked);
-    void onReadReady();
 private:
     Ui::MainWindow *ui;
 };
